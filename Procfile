@@ -1,0 +1,1 @@
+web: gunicorn fcv2.wsgi --log-file -
