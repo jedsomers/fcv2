@@ -14,7 +14,7 @@ import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fc_core',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -53,7 +54,7 @@ ROOT_URLCONF = 'fcv2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['fc-v2/fcv2/',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +67,9 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_DIRS = (TEMPLATE_PATH,)
 
 WSGI_APPLICATION = 'fcv2.wsgi.application'
 
@@ -106,11 +110,11 @@ ALLOWED_HOSTS = ['*']
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(PROJECT_ROOT, 'static'),
 )
 
 # Simplified static file serving.
